@@ -1,4 +1,6 @@
 use rust_concurrent_pipeline::thread_partitioning;
+use rust_concurrent_pipeline::channel_processing;
+
 
 fn main() {
     // 100만 개 데이터 생성 (C의 malloc 대신 Vec 사용)
@@ -6,6 +8,9 @@ fn main() {
 
     // C의 pthread_create 대응 코드 실행
     let result = thread_partitioning::parallel_average(&data, 4);
+
+    channel_processing::main();
+
     
     println!(
         "reuslt: {}개 스레드 사용, 평균값: {:.2}",

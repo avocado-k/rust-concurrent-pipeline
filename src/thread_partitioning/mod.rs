@@ -26,10 +26,7 @@ pub fn parallel_average(data: &[f64], num_threads: usize) -> PartitionResult {
         }));
     }
 
-    let total: f64 = handles
-        .into_iter()
-        .map(|h| h.join().unwrap())
-        .sum();
+    let total: f64 = handles.into_iter().map(|h| h.join().unwrap()).sum();
 
     PartitionResult {
         total_avg: total / num_threads as f64,
